@@ -7,11 +7,11 @@ import {
 import App from './App'
 import './index.css'
 
-
 let router = createBrowserRouter([{
   element: <App></App>,
   path: '/'
 }])
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <div className="full-page-loader">
