@@ -8,8 +8,7 @@ export default defineConfig({
   plugins: [react(),viteCompression({
     verbose: true,
     algorithm: 'brotliCompress',
-    ext: 'br',
-    
+    ext: 'br'
   })],
   build: {
     outDir: 'public'
