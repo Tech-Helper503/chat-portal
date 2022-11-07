@@ -13,8 +13,6 @@ import { MessagingArea } from './pages/MessagingArea'
 
 
 
-export const [auth, firestore] = await initApp()
-
 let router = createBrowserRouter([{
   element: <App></App>,
   path: '/',
@@ -29,15 +27,19 @@ let router = createBrowserRouter([{
   errorElement: <NotFound></NotFound>
 }])
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <div className="full-page-loader dark:bg-[var(--color-surface-dark)] bg-[var(--color-surface-light)]">
-      <FirebaseContext.Provider value={[auth, firestore]}>
-        <RouterProvider router={router}></RouterProvider>
-      </FirebaseContext.Provider>
-    </div>
 
-  </React.StrictMode>
-)
+initApp().then(([auth, firestore]) => {
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      <div className="full-page-loader dark:bg-[var(--color-surface-dark)] bg-[var(--color-surface-light)]">
+        <FirebaseContext.Provider value={[auth, firestore]}>
+          <RouterProvider router={router}></RouterProvider>
+        </FirebaseContext.Provider>
+      </div>
+  
+    </React.StrictMode>
+  )
+})
+
 
 
